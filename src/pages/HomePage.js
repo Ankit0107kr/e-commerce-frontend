@@ -8,8 +8,8 @@ import toast from "react-hot-toast";
 import Layout from "./../components/Layout/Layout";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
-import exampleImage from '../../src/images/front.png';
-import RunningCart from "../components/Layout/RunningCart";
+// import exampleImage from '../../src/images/front.png';
+// import RunningCart from "../components/Layout/RunningCart";
 import Carousel from "../components/Layout/Carousel";
 
 const HomePage = () => {

@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "proxy": "https://e-commerce-backend-1v31.onrender.com",
+  "proxy": "https://e-commerce-backend-5hsx.onrender.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

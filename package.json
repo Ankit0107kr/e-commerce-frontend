@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "proxy": "https://e-commerce-backend-5hsx.onrender.com/",
+  "proxy": "https://e-commerce-backend-5hsx.onrender.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,6 +10,7 @@
     "antd": "^5.1.7",
     "axios": "^1.2.5",
     "braintree-web-drop-in-react": "^1.2.1",
+    "cors": "^2.8.5",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.3",

@@ -21,7 +21,7 @@ const Contact = () => {
             <h3>24X7 availiable...</h3>
           </p>
           <p className="mt-3">
-            <BiMailSend /> : www.help@ecommerceapp.com
+            <BiMailSend /> : www.help@VibeMart.com
           </p>
           <p className="mt-3">
             <BiPhoneCall /> : 012-3456789

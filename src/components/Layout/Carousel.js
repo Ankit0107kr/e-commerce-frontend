@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import '../../styles/Carousel.css';
 import image1 from '../../images/c1.jpg';
-import image2 from '../../images/c2.png';
+import image2 from '../../images/c2.jpg';
 import image3 from '../../images/c3.jpg';
 import image4 from '../../images/c4.jpg';
 

@@ -4,13 +4,14 @@ import Layout from "./../../components/Layout/Layout";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+const backendURL = process.env.REACT_APP_BACKEND_URL;
 const Products = () => {
   const [products, setProducts] = useState([]);
 
   //getall products
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get("https://e-commerce-backend-5hsx.onrender.com/api/v1/product/get-product");
+      const { data } = await axios.get(`${backendURL}/api/v1/product/get-product`);
       setProducts(data.products);
     } catch (error) {
       console.log(error);
@@ -39,7 +40,7 @@ const Products = () => {
               >
                 <div className="card m-2" style={{ width: "18rem" }}>
                   <img
-                    src={`https://e-commerce-backend-5hsx.onrender.com/api/v1/product/product-photo/${p._id}`}
+                    src={`${backendURL}/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />

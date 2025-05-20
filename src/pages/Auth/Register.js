@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import "../../styles/AuthStyles.css";
+const backendURL = process.env.REACT_APP_BACKEND_URL;
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,13 +18,14 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://e-commerce-backend-5hsx.onrender.com/api/v1/auth/register", {
+      const res = await axios.post(`${backendURL}/api/v1/auth/register`, {
         name,
         email,
         password,
         phone,
         address,
         answer,
+        
       });
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);

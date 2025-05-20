@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "./../components/Layout/Layout";
 import { useSearch } from "../context/search";
+const backendURL = process.env.REACT_APP_BACKEND_URL;
 const Search = () => {
   const [values, setValues] = useSearch();
   return (
@@ -17,7 +18,7 @@ const Search = () => {
             {values?.results.map((p) => (
               <div className="card m-2" style={{ width: "18rem" }}>
                 <img
-                  src={`https://e-commerce-backend-5hsx.onrender.com/api/v1/product/product-photo/${p._id}`}
+                  src={`${backendURL}/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />

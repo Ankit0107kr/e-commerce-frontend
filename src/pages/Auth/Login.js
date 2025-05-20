@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import "../../styles/AuthStyles.css";
 import { useAuth } from "../../context/auth";
+const backendURL = process.env.REACT_APP_BACKEND_URL;
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +18,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://e-commerce-backend-5hsx.onrender.com/api/v1/auth/login", {
+      const res = await axios.post(`${backendURL}/api/v1/auth/login`, {
         email,
         password,
       });

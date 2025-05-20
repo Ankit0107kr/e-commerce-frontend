@@ -5,7 +5,7 @@ import { useCart } from "../context/cart";
 import toast from "react-hot-toast";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/ProductDetailsStyles.css";
-
+const backendURL = process.env.REACT_APP_BACKEND_URL;
 const ProductDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const ProductDetails = () => {
   const getProduct = async () => {
     try {
       const { data } = await axios.get(
-        `https://e-commerce-backend-5hsx.onrender.com/api/v1/product/get-product/${params.slug}`
+        `${backendURL}/api/v1/product/get-product/${params.slug}`
       );
       setProduct(data?.product);
       getSimilarProduct(data?.product._id, data?.product.category._id);
@@ -36,7 +36,7 @@ const ProductDetails = () => {
   const getSimilarProduct = async (pid, cid) => {
     try {
       const { data } = await axios.get(
-        `https://e-commerce-backend-5hsx.onrender.com/api/v1/product/related-product/${pid}/${cid}`
+        `${backendURL}/api/v1/product/related-product/${pid}/${cid}`
       );
       setRelatedProducts(data?.products);
     } catch (error) {
@@ -55,7 +55,7 @@ const ProductDetails = () => {
       <div className="row container product-details">
         <div className="col-md-3">
           <img
-            src={`https://e-commerce-backend-5hsx.onrender.com/api/v1/product/product-photo/${product._id}`}
+            src={`${backendURL}/api/v1/product/product-photo/${product._id}`}
             className="card-img-top"
             alt={product.name}
             height="300"
@@ -90,7 +90,7 @@ const ProductDetails = () => {
           {relatedProducts?.map((p) => (
             <div className="card m-2" key={p._id}>
               <img
-                src={`https://e-commerce-backend-5hsx.onrender.com/api/v1/product/product-photo/${p._id}`}
+                src={`${backendURL}/api/v1/product/product-photo/${p._id}`}
                 className="card-img-top"
                 alt={p.name}
               />

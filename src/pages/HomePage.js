@@ -11,6 +11,7 @@ import "../styles/Homepage.css";
 // import exampleImage from '../../src/images/front.png';
 // import RunningCart from "../components/Layout/RunningCart";
 import Carousel from "../components/Layout/Carousel";
+const backendURL = process.env.REACT_APP_BACKEND_URL;
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const HomePage = () => {
   //get all cat
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("https://e-commerce-backend-5hsx.onrender.com/api/v1/category/get-category");
+      const { data } = await axios.get(`${backendURL}/api/v1/category/get-category`);
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -43,7 +44,7 @@ const HomePage = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`https://e-commerce-backend-5hsx.onrender.com/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${backendURL}/api/v1/product/product-list/${page}`);
       setLoading(false);
       setProducts(data.products);
     } catch (error) {
@@ -55,7 +56,7 @@ const HomePage = () => {
   //getTOtal COunt
   const getTotal = async () => {
     try {
-      const { data } = await axios.get("https://e-commerce-backend-5hsx.onrender.com/api/v1/product/product-count");
+      const { data } = await axios.get(`${backendURL}/api/v1/product/product-count`);
       setTotal(data?.total);
     } catch (error) {
       console.log(error);
@@ -70,7 +71,7 @@ const HomePage = () => {
   const loadMore = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`https://e-commerce-backend-5hsx.onrender.com/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${backendURL}/api/v1/product/product-list/${page}`);
       setLoading(false);
       setProducts([...products, ...data?.products]);
     } catch (error) {
@@ -100,7 +101,7 @@ const HomePage = () => {
   //get filterd product
   const filterProduct = async () => {
     try {
-      const { data } = await axios.post("https://e-commerce-backend-5hsx.onrender.com/api/v1/product/product-filters", {
+      const { data } = await axios.post(`${backendURL}/api/v1/product/product-filters`, {
         checked,
         radio,
       });
@@ -111,16 +112,8 @@ const HomePage = () => {
   };
   return (
     <Layout title={"All Products - Best offers "}>
-      {/* <img src={exampleImage} alt="image"
-        // alt="bannerimage"
-        className="banner-img"
-        width={"100%"}
-      /> */}
       <Carousel/>
-      {/* <RunningCart /> */}
-      
-
-      <div className="container-fluid row mt-3 home-page">
+       <div className="container-fluid row mt-3 home-page">
         <div className="col-md-3 filters">
           <h4 className="text-center">Filter By Category</h4>
           <div className="d-flex flex-column">
@@ -159,7 +152,7 @@ const HomePage = () => {
             {products?.map((p) => (
               <div className="card m-2" key={p._id}>
                 <img
-                  src={`https://e-commerce-backend-5hsx.onrender.com/api/v1/product/product-photo/${p._id}`}
+                  src={`${backendURL}/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />
@@ -174,7 +167,7 @@ const HomePage = () => {
                     </h5>
                   </div>
                   <p className="card-text ">
-                    {p.description.substring(0, 60)}...
+                    {p.description.substring(0, 30)}...
                   </p>
                   <div className="card-name-price">
                     <button

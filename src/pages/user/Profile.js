@@ -4,6 +4,7 @@ import Layout from "./../../components/Layout/Layout";
 import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
 import axios from "axios";
+const backendURL = process.env.REACT_APP_BACKEND_URL;
 const Profile = () => {
   //context
   const [auth, setAuth] = useAuth();
@@ -27,7 +28,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put("https://e-commerce-backend-5hsx.onrender.com/api/v1/auth/profile", {
+      const { data } = await axios.put(`${backendURL}/api/v1/auth/profile`, {
         name,
         email,
         password,
